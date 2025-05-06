@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gym-paymentservice-depl
+spec:
+  selector:
+    matchLabels:
+      app: gym-paymentservice-depl
+  template:
+    metadata:
+      labels:
+        app: gym-paymentservice-depl
+    spec:
+      containers:
+      - name: gym-paymentservice-depl
+        image: virabshetkar/gym-payment-service
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gym-paymentservice-clusterip
+spec:
+  selector:
+    app: gym-paymentservice-depl
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailcatcher-service
+spec:
+  selector:
+    matchLabels:
+      app: mailcatcher-service
+  template:
+    metadata:
+      labels:
+        app: mailcatcher-service
+    spec:
+      containers:
+        - name: mailcatcher-service
+          image: dockage/mailcatcher:latest
+          ports:
+            - containerPort: 1080
+            - containerPort: 1025
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailcatcher-service-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: mailcatcher-service
+  ports:
+    - name: mailcatcher-web-service
+      protocol: TCP
+      port: 80
+      targetPort: 1080
+    - name: mailcatcher-mail-service
+      protocol: TCP
+      port: 1025
+      targetPort: 1025

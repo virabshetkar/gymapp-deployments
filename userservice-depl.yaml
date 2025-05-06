@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userservice-depl
+spec:
+  selector:
+    matchLabels:
+      app: userservice-depl
+  template:
+    metadata:
+      labels:
+        app: userservice-depl
+    spec:
+      containers:
+      - name: userservice-depl
+        image: 2023tm93546/gym-buddy-user-service
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          value: postgresql://user:password@postgresdb-clusterip/default?schema=public
+        - name: JWT_SECRET
+          value: "your-secret"
+        - name: JWT_EXPIRES_IN
+          value: 1d
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userservice-clusterip
+spec:
+  selector:
+    app: userservice-depl
+  ports:
+  - port: 80
+    targetPort: 3000

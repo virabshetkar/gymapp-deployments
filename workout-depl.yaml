@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workout-service-depl
+spec:
+  selector:
+    matchLabels:
+      app: workout-service-depl
+  template:
+    metadata:
+      labels:
+        app: workout-service-depl
+    spec:
+      containers:
+        - name: workout-service-depl
+          image: virabshetkar/workout-service
+          ports:
+            - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workout-service-clusterip
+spec:
+  selector:
+    app: workout-service-depl
+  ports:
+    - port: 80
+      targetPort: 3001

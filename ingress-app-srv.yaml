@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-app-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: gymapp.com
+      http:
+        paths:
+          - path: /api/notifications
+            pathType: Prefix
+            backend:
+              service:
+                name: notification-service-clusterip
+                port:
+                  number: 80
+          - path: /api/payments
+            pathType: Prefix
+            backend:
+              service:
+                name: gym-paymentservice-clusterip
+                port:
+                  number: 80
+          - path: /api/workouts
+            pathType: Prefix
+            backend:
+              service:
+                name: workout-service-clusterip
+                port:
+                  number: 80
+          - path: /api/user
+            pathType: Prefix
+            backend:
+              service:
+                name: userservice-clusterip
+                port:
+                  number: 80
+          - path: /api/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: userservice-clusterip
+                port:
+                  number: 80
