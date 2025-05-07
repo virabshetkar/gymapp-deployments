@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "9db1c1ba-8d12-44d3-a706-f631074fb91a",
+		"name": "Workout Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44282763"
+	},
+	"item": [
+		{
+			"name": "Show All Plans",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/workouts/showAllPlans",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"workouts",
+						"showAllPlans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Plan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/workouts/showPlan/{{userid}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"workouts",
+						"showPlan",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Plan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userid\": \"{{userid}}\",\r\n    \"plan\": \"Basic\",\r\n    \"days\": 9,\r\n    \"exercise\": [\r\n        \"Push Ups\",\r\n        \"Dumbbell Curls\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/workouts/createPlan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"workouts",
+						"createPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Exercise",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exercise\": [\r\n        \"Push Ups\",\r\n        \"Dumbbell Curls\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/workouts/updatePlan/exerciseSchedule/{{userid}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"workouts",
+						"updatePlan",
+						"exerciseSchedule",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Plan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exercise\": [\r\n        \"Push Ups\",\r\n        \"Dumbbell Curls\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/workouts/deletePlan/{{userid}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"workouts",
+						"deletePlan",
+						"{{userid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

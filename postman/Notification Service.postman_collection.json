@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "380bd07f-7c22-4370-85ff-47b40f4551cf",
+		"name": "Notification Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44282763"
+	},
+	"item": [
+		{
+			"name": "Send Notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"name\": \"John Doe\",\r\n        \"email\": \"johndoe@email.com\"\r\n    },\r\n    \"emailType\": \"registration\",\r\n    \"templateData\": {\r\n        \"name\": \"JOOOHHHNN DOOOOEEE\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/notifications/send-email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"notifications",
+						"send-email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Notification Ingress",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"name\": \"John Doe\",\r\n        \"email\": \"johndoe@email.com\"\r\n    },\r\n    \"emailType\": \"registration\",\r\n    \"templateData\": {\r\n        \"name\": \"JOOOHHHNN DOOOOEEE\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/notifications/send-email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"notifications",
+						"send-email"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
